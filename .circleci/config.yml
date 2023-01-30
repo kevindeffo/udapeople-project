@@ -166,6 +166,7 @@ jobs:
       - run:
           name: Ensure back-end infrastructure exists
           command: |
+            echo ${CIRCLE_WORKFLOW_ID:0:7} 
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \
               --tags project=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
@@ -209,7 +210,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["d1:d2:da:15:2d:f4:53:d1:21:67:9f:16:5f:7a:0d:b4d1:d2:da:15:2d:f4:53:d1:21:67:9f:16:5f:7a:0d:b4"]
+          fingerprints: ["d1:d2:da:15:2d:f4:53:d1:21:67:9f:16:5f:7a:0d:b4"]
       - attach_workspace:
           at: ~/
       - run:
